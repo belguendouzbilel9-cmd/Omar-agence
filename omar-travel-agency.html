@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وكالة عمر للسياحة والأسفار — العمرة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#0a4a1a;--green-mid:#1a7a2a;--green-soft:#1e5c28;
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:#8A6E2F;
+  --dark:#0a1410;--dark-mid:#111e14;--dark-soft:#162018;
+  --cream:#F8F5EF;--cream-dark:#EDE8DC;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--dark);color:#fff;overflow-x:hidden}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;width:100%;z-index:300;background:rgba(10,20,16,0.97);backdrop-filter:blur(16px);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px;border-bottom:1px solid rgba(201,168,76,0.2);transition:height 0.3s}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--green),var(--green-mid));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(201,168,76,0.3);flex-shrink:0}
+.logo-text strong{display:block;font-size:1rem;font-weight:900;color:#fff;line-height:1.2}
+.logo-text span{font-size:0.68rem;color:var(--gold-light);font-weight:400}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;right:0;width:0;height:2px;background:var(--gold);transition:width 0.3s}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-links a:hover::after{width:100%}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:26px;height:2px;background:var(--gold);border-radius:2px}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 5% 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+  linear-gradient(to bottom,rgba(10,20,16,0.6) 0%,rgba(10,20,16,0.45) 40%,rgba(10,20,16,0.92) 100%),
+  url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1600&q=80') center/cover no-repeat;z-index:0}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.38);color:var(--gold-light);padding:7px 22px;border-radius:30px;font-size:0.78rem;letter-spacing:2px;font-weight:700;margin-bottom:24px;animation:fadeUp 0.7s ease both}
+.hero h1{font-family:'Amiri',serif;font-size:clamp(2.2rem,6vw,4.8rem);color:#fff;line-height:1.25;margin-bottom:16px;animation:fadeUp 0.8s 0.1s ease both}
+.hero h1 span{color:var(--gold-light)}
+.hero-sub{color:rgba(255,255,255,0.7);font-size:clamp(1rem,2vw,1.18rem);max-width:600px;line-height:1.9;margin:0 auto 16px;animation:fadeUp 0.9s 0.2s ease both}
+.hero-location{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);padding:7px 18px;border-radius:30px;font-size:0.82rem;color:rgba(255,255,255,0.6);margin-bottom:36px;animation:fadeUp 1s 0.25s ease both}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s 0.3s ease both}
+.btn-green{background:linear-gradient(135deg,var(--green),var(--green-mid));color:#fff;padding:13px 32px;border-radius:9px;font-size:0.96rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:'Tajawal',sans-serif;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,0.25);transition:transform 0.2s,box-shadow 0.2s}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(10,74,26,0.6)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);padding:13px 32px;border-radius:9px;font-size:0.96rem;font-weight:800;text-decoration:none;border:none;cursor:pointer;font-family:'Tajawal',sans-serif;display:inline-flex;align-items:center;gap:8px;transition:transform 0.2s,box-shadow 0.2s}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,0.45)}
+
+/* Hero stats bar */
+.hero-stats{width:100%;background:rgba(10,20,16,0.94);backdrop-filter:blur(12px);border-top:1px solid rgba(201,168,76,0.15);display:flex;justify-content:center;flex-wrap:wrap;margin-top:48px;border-radius:14px}
+.stat{padding:18px 42px;text-align:center;border-left:1px solid rgba(201,168,76,0.1)}
+.stat:last-child{border-left:none}
+.stat-num{display:block;font-size:1.65rem;font-weight:900;color:var(--gold);line-height:1}
+.stat-lbl{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:4px;display:block}
+
+/* ===== COMING SOON ===== */
+.coming-section{background:var(--dark-mid);padding:80px 5%;scroll-margin-top:68px}
+.sec-label{font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';display:block;width:28px;height:2px;background:var(--gold)}
+.sec-title{font-family:'Amiri',serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.3;margin-bottom:14px}
+.sec-sub{color:rgba(255,255,255,0.5);font-size:0.98rem;max-width:540px;line-height:1.85;margin-bottom:46px}
+
+.coming-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.month-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:20px 16px;text-align:center;transition:background 0.2s,border-color 0.2s,transform 0.2s;cursor:default}
+.month-card:hover{background:rgba(201,168,76,0.07);border-color:rgba(201,168,76,0.35);transform:translateY(-3px)}
+.month-card.ramadan{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.18));border-color:rgba(201,168,76,0.4)}
+.month-icon{font-size:1.8rem;margin-bottom:8px;display:block}
+.month-name{font-size:0.92rem;font-weight:700;color:#fff;margin-bottom:4px}
+.month-tag{font-size:0.68rem;color:rgba(255,255,255,0.35);font-weight:500}
+.month-card.ramadan .month-name{color:var(--gold-light)}
+.month-card.ramadan .month-tag{color:rgba(201,168,76,0.6)}
+
+.coming-cta{margin-top:36px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.coming-note{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:14px 20px;font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;flex:1;min-width:240px}
+.coming-note strong{color:var(--gold-light)}
+
+/* ===== CURRENT OFFER ===== */
+.offer-section{background:var(--dark-soft);padding:80px 5%;scroll-margin-top:68px}
+
+.offer-card{background:linear-gradient(160deg,rgba(10,74,26,0.25),rgba(10,20,16,0.8));border:1px solid rgba(201,168,76,0.3);border-radius:22px;overflow:hidden;max-width:960px;margin:0 auto}
+
+/* Offer header */
+.offer-head{background:linear-gradient(135deg,var(--green),var(--green-mid));padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.offer-head-left{display:flex;align-items:center;gap:16px}
+.offer-emoji{font-size:2.8rem;line-height:1}
+.offer-title-block{}
+.offer-eyebrow{font-size:0.7rem;letter-spacing:2px;color:rgba(255,255,255,0.55);font-weight:700;margin-bottom:4px}
+.offer-title{font-family:'Amiri',serif;font-size:1.8rem;color:#fff;font-weight:700;line-height:1.2}
+.offer-subtitle{font-size:0.82rem;color:rgba(255,255,255,0.6);margin-top:3px}
+.offer-days-badge{background:rgba(0,0,0,0.25);border:1.5px solid rgba(201,168,76,0.4);border-radius:14px;padding:12px 22px;text-align:center;flex-shrink:0}
+.offer-days-badge .num{font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;display:block}
+.offer-days-badge .lbl{font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:700;display:block;margin-top:2px}
+
+/* Offer info strip */
+.offer-strip{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid rgba(201,168,76,0.12)}
+.strip-item{flex:1;min-width:160px;padding:16px 22px;border-left:1px solid rgba(201,168,76,0.1);display:flex;align-items:center;gap:10px}
+.strip-item:last-child{border-left:none}
+.strip-icon{font-size:1.4rem;flex-shrink:0}
+.strip-lbl{font-size:0.67rem;color:rgba(255,255,255,0.38);font-weight:700;letter-spacing:0.5px;margin-bottom:2px}
+.strip-val{font-size:0.9rem;font-weight:700;color:#fff;line-height:1.3}
+.strip-val em{color:var(--gold);font-style:normal}
+
+/* Room prices */
+.offer-body{padding:28px 32px}
+.offer-rooms-title{font-size:0.72rem;letter-spacing:1.5px;font-weight:800;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.offer-rooms-title::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.15)}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.room-card{background:rgba(255,255,255,0.04);border:1.5px solid rgba(201,168,76,0.18);border-radius:14px;padding:20px 18px;text-align:center;transition:border-color 0.2s,background 0.2s,transform 0.2s;position:relative;overflow:hidden}
+.room-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.07);transform:translateY(-3px)}
+.room-card.best{border-color:rgba(201,168,76,0.5)}
+.room-best-tag{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--dark);font-size:0.62rem;font-weight:900;padding:3px 14px;border-radius:0 0 8px 8px;letter-spacing:0.5px}
+.room-icon{font-size:1.6rem;margin-bottom:10px;display:block}
+.room-type{font-size:0.9rem;font-weight:800;color:#fff;margin-bottom:4px}
+.room-persons{font-size:0.72rem;color:rgba(255,255,255,0.4);margin-bottom:14px}
+.room-price{font-size:1.5rem;font-weight:900;color:var(--gold);line-height:1;display:block}
+.room-price-unit{font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:2px;display:block}
+.room-btn{margin-top:14px;width:100%;padding:9px;background:linear-gradient(135deg,var(--green),var(--green-mid));color:#fff;border:none;border-radius:8px;font-family:'Tajawal',sans-serif;font-size:0.82rem;font-weight:700;cursor:pointer;transition:opacity 0.2s,transform 0.2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.room-btn:hover{opacity:0.88;transform:scale(0.98)}
+
+/* Services */
+.offer-services{display:flex;flex-wrap:wrap;gap:10px;padding-top:22px;border-top:1px solid rgba(201,168,76,0.1);margin-bottom:24px}
+.srv{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:7px 12px;font-size:0.8rem;color:rgba(255,255,255,0.65)}
+.srv span{color:var(--gold)}
+
+/* Prayer */
+.offer-prayer{text-align:center;padding:16px 24px;background:rgba(255,255,255,0.02);border-top:1px solid rgba(201,168,76,0.1);font-family:'Amiri',serif;font-size:1rem;color:rgba(255,255,255,0.4);font-style:italic}
+
+/* ===== MODAL ===== */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.overlay.open{display:flex}
+.modal{background:#0f1e12;border:1px solid rgba(201,168,76,0.25);border-radius:20px;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+.modal-head{background:linear-gradient(135deg,var(--green),var(--green-soft));padding:26px 26px 22px;border-radius:20px 20px 0 0;position:relative}
+.modal-head h3{font-family:'Amiri',serif;font-size:1.45rem;color:#fff;margin-bottom:5px}
+.modal-head p{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+.modal-close{position:absolute;top:16px;left:16px;background:rgba(255,255,255,0.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.modal-close:hover{background:rgba(255,255,255,0.2)}
+.modal-strip{margin:0 22px;margin-top:-14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:10px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
+.ms-name{font-weight:800;color:var(--dark);font-size:0.88rem;max-width:65%}
+.ms-price{font-size:1.05rem;font-weight:900;color:var(--dark);white-space:nowrap}
+.modal-body{padding:20px 22px 24px}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.fg label{font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.8)}
+.fg label .r{color:#e74c3c;margin-right:2px}
+.fg input,.fg select{padding:11px 14px;border:1.5px solid rgba(255,255,255,0.1);border-radius:9px;font-family:'Tajawal',sans-serif;font-size:0.9rem;background:rgba(255,255,255,0.05);color:#fff;outline:none;transition:border-color 0.2s}
+.fg input:focus,.fg select:focus{border-color:var(--gold)}
+.fg input::placeholder{color:rgba(255,255,255,0.25)}
+.fg select option{background:#0f1e12;color:#fff}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.room-suggest{display:none;background:rgba(201,168,76,0.07);border:1.5px solid rgba(201,168,76,0.3);border-radius:10px;padding:13px 15px;margin-bottom:14px}
+.room-suggest.show{display:block}
+.rs-lbl{font-size:0.68rem;font-weight:800;color:var(--gold);letter-spacing:0.5px;margin-bottom:4px}
+.rs-val{font-size:0.97rem;font-weight:800;color:#fff;margin-bottom:2px}
+.rs-desc{font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.5}
+.wa-btn{width:100%;padding:14px;background:linear-gradient(135deg,#25D366,#1da851);color:#fff;border:none;border-radius:10px;font-family:'Tajawal',sans-serif;font-size:0.98rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform 0.2s,box-shadow 0.2s;margin-top:4px}
+.wa-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.35)}
+.wa-btn:disabled{opacity:0.35;cursor:not-allowed}
+.wa-hint{font-size:0.72rem;color:rgba(255,255,255,0.3);text-align:center;margin-top:9px}
+
+/* ===== WHY ===== */
+.why-section{background:var(--dark);padding:80px 5%;scroll-margin-top:68px}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.why-card{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.12);border-radius:14px;padding:26px 20px;text-align:center;transition:transform 0.3s,border-color 0.3s}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.3)}
+.why-icon{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,rgba(10,74,26,0.4),rgba(26,122,42,0.3));border:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 15px}
+.why-card h3{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:8px}
+.why-card p{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.7}
+
+/* ===== FOOTER ===== */
+footer{background:#060e08;padding:48px 5% 24px;border-top:1px solid rgba(201,168,76,0.1)}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;padding-bottom:34px;border-bottom:1px solid rgba(201,168,76,0.08);margin-bottom:22px}
+.footer-brand p{font-size:0.83rem;line-height:1.85;color:rgba(255,255,255,0.4);margin-top:14px;max-width:250px}
+.footer-col h4{color:#fff;font-size:0.88rem;font-weight:700;margin-bottom:14px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer-col a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--gold-light)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:0.78rem;color:rgba(255,255,255,0.3)}
+.socials{display:flex;gap:9px}
+.soc{width:35px;height:35px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:0.9rem;transition:background 0.2s,border-color 0.2s}
+.soc:hover{background:rgba(201,168,76,0.12);border-color:var(--gold)}
+
+/* WA float */
+.wa-float{position:fixed;bottom:24px;left:24px;z-index:400;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;box-shadow:0 6px 22px rgba(37,211,102,0.4);animation:wap 2.5s infinite;transition:transform 0.2s}
+.wa-float:hover{transform:scale(1.1)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wap{0%,100%{box-shadow:0 6px 22px rgba(37,211,102,0.4)}50%{box-shadow:0 6px 34px rgba(37,211,102,0.65),0 0 0 8px rgba(37,211,102,0.08)}}
+
+@media(max-width:860px){
+  .rooms-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .strip-item{min-width:50%}
+}
+@media(max-width:720px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:68px;right:0;left:0;background:rgba(10,20,16,0.99);padding:20px 5%;border-top:1px solid rgba(201,168,76,0.12);z-index:100}
+  .offer-head{flex-direction:column;align-items:flex-start}
+  .frow{grid-template-columns:1fr}
+  .coming-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:420px){
+  .coming-grid{grid-template-columns:repeat(2,1fr)}
+  .stat{padding:14px 22px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="#">
+    <div class="logo-icon">🕋</div>
+    <div class="logo-text">
+      <strong>وكالة عمر — وهران</strong>
+      <span>للسياحة والأسفار · عمرة ميسرة</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="javascript:void(0)" onclick="goTo('home')">الرئيسية</a></li>
+    <li><a href="javascript:void(0)" onclick="goTo('offer')">العرض الحالي</a></li>
+    <li><a href="javascript:void(0)" onclick="goTo('coming')">البرامج القادمة</a></li>
+    <li><a href="javascript:void(0)" onclick="goTo('why')">لماذا نحن</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🕋 وكالة عمر — وهران</div>
+    <h1>عمرة ميسرة<br><span>ورحلة مباركة</span></h1>
+    <p class="hero-sub">عروض العمرة من شهر <strong style="color:var(--gold-light)">أوت</strong> حتى شهر <strong style="color:var(--gold-light)">رمضان</strong><br>قريباً — اختر ما يناسبك 🌙</p>
+    <div class="hero-location">📍 رحلات مباشرة من وهران — مع الخطوط الجوية الجزائرية Air Algérie</div>
+    <div class="hero-btns">
+      <a href="javascript:void(0)" onclick="goTo('offer')" class="btn-gold">🔥 عرض جويلية 2026</a>
+      <a href="javascript:void(0)" onclick="goTo('coming')" class="btn-green">🌙 البرامج القادمة</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">+5,000</span><span class="stat-lbl">معتمر سافروا معنا</span></div>
+    <div class="stat"><span class="stat-num">16</span><span class="stat-lbl">يوم إقامة</span></div>
+    <div class="stat"><span class="stat-num">700م</span><span class="stat-lbl">من الحرم المكي</span></div>
+    <div class="stat"><span class="stat-num">24/24</span><span class="stat-lbl">مرشدون معكم</span></div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="coming-section" id="coming">
+  <div class="sec-label">البرامج القادمة</div>
+  <h2 class="sec-title">عروض من <span style="color:var(--gold-light)">أوت</span> حتى <span style="color:var(--gold-light)">رمضان</span> — قريباً</h2>
+  <p class="sec-sub">نعمل على إعداد برامج عمرة متنوعة طوال الموسم — اختر ما يناسبك وتابعونا</p>
+
+  <div class="coming-grid">
+    <div class="month-card">
+      <span class="month-icon">☀️</span>
+      <div class="month-name">أوت 2025</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card">
+      <span class="month-icon">🍂</span>
+      <div class="month-name">سبتمبر</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card">
+      <span class="month-icon">🍁</span>
+      <div class="month-name">أكتوبر</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card">
+      <span class="month-icon">🌧️</span>
+      <div class="month-name">نوفمبر</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card">
+      <span class="month-icon">❄️</span>
+      <div class="month-name">ديسمبر</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card">
+      <span class="month-icon">🌨️</span>
+      <div class="month-name">جانفي</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card">
+      <span class="month-icon">🌸</span>
+      <div class="month-name">فيفري</div>
+      <div class="month-tag">قريباً</div>
+    </div>
+    <div class="month-card ramadan">
+      <span class="month-icon">🌙</span>
+      <div class="month-name">رمضان</div>
+      <div class="month-tag">✨ موسم مبارك</div>
+    </div>
+  </div>
+
+  <div class="coming-cta">
+    <div class="coming-note">
+      📢 ستتوفر جميع برامج العمرة قريباً — <strong>انتظرونا</strong><br>
+      للتسجيل المسبق وحجز مكانك قبل امتلاء الأماكن، تواصل معنا الآن
+    </div>
+    <button onclick="openModal('تسجيل مسبق — برامج العمرة من أوت حتى رمضان','سيتم إعلامك بالأسعار قريباً','')" class="btn-gold" style="white-space:nowrap;align-self:center;border:none;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.96rem">
+      💬 سجّل مسبقاً الآن
+    </button>
+  </div>
+</section>
+
+<!-- CURRENT OFFER -->
+<section class="offer-section" id="offer">
+  <div class="sec-label">العرض الحالي</div>
+  <h2 class="sec-title">عمرة <span style="color:var(--gold-light)">24 جويلية 2026</span></h2>
+  <p class="sec-sub" style="margin-bottom:36px">عرض متاح الآن — احجز مكانك قبل امتلاء الأماكن</p>
+
+  <div class="offer-card">
+
+    <!-- Head -->
+    <div class="offer-head">
+      <div class="offer-head-left">
+        <div class="offer-emoji">🕋</div>
+        <div class="offer-title-block">
+          <div class="offer-eyebrow">وكالة عمر — وهران</div>
+          <div class="offer-title">عمرة ميسرة ورحلة مباركة</div>
+          <div class="offer-subtitle">تنظيم رسمي معتمد · Air Algérie</div>
+        </div>
+      </div>
+      <div class="offer-days-badge">
+        <span class="num">16</span>
+        <span class="lbl">الإقامة</span>
+        <span class="lbl">يوماً</span>
+      </div>
+    </div>
+
+    <!-- Info strip -->
+    <div class="offer-strip">
+      <div class="strip-item">
+        <span class="strip-icon">📅</span>
+        <div>
+          <div class="strip-lbl">تاريخ الانطلاق</div>
+          <div class="strip-val"><em>24 جويلية 2026</em></div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">✈️</span>
+        <div>
+          <div class="strip-lbl">الرحلة المباشرة</div>
+          <div class="strip-val">وهران ← المدينة المنورة</div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">🏨</span>
+        <div>
+          <div class="strip-lbl">الفندق</div>
+          <div class="strip-val">فرسان أجياد<br><small style="color:rgba(255,255,255,0.4);font-size:0.72rem">شارع بئر بليلة</small></div>
+        </div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">📍</span>
+        <div>
+          <div class="strip-lbl">المسافة من الحرم</div>
+          <div class="strip-val"><em>700 متر</em> فقط</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room prices -->
+    <div class="offer-body">
+      <div class="offer-rooms-title">🏨 أسعار الغرف — للشخص الواحد</div>
+
+      <div class="rooms-grid">
+
+        <div class="room-card best">
+          <span class="room-best-tag">الأوفر</span>
+          <span class="room-icon">👥👥</span>
+          <div class="room-type">الغرفة الرباعية</div>
+          <div class="room-persons">4 أشخاص في غرفة واحدة</div>
+          <span class="room-price">205,000</span>
+          <span class="room-price-unit">دج / للشخص الواحد</span>
+          <button class="room-btn" onclick="openModal('عمرة جويلية 2026 — غرفة رباعية','205,000 دج / للشخص','4')">
+            📋 احجز هذه الغرفة
+          </button>
+        </div>
+
+        <div class="room-card">
+          <span class="room-icon">👥👤</span>
+          <div class="room-type">الغرفة الثلاثية</div>
+          <div class="room-persons">3 أشخاص في غرفة واحدة</div>
+          <span class="room-price">230,000</span>
+          <span class="room-price-unit">دج / للشخص الواحد</span>
+          <button class="room-btn" onclick="openModal('عمرة جويلية 2026 — غرفة ثلاثية','230,000 دج / للشخص','3')">
+            📋 احجز هذه الغرفة
+          </button>
+        </div>
+
+        <div class="room-card">
+          <span class="room-icon">👤👤</span>
+          <div class="room-type">الغرفة الثنائية</div>
+          <div class="room-persons">2 شخصان في غرفة واحدة</div>
+          <span class="room-price">248,000</span>
+          <span class="room-price-unit">دج / للشخص الواحد</span>
+          <button class="room-btn" onclick="openModal('عمرة جويلية 2026 — غرفة ثنائية','248,000 دج / للشخص','2')">
+            📋 احجز هذه الغرفة
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Services -->
+      <div class="offer-services">
+        <div class="srv"><span>✓</span> رحلة مباشرة Air Algérie</div>
+        <div class="srv"><span>✓</span> تأشيرة العمرة</div>
+        <div class="srv"><span>✓</span> نقل من المطار للفندق</div>
+        <div class="srv"><span>✓</span> زيارات المعالم الدينية</div>
+        <div class="srv"><span>✓</span> زيارة المدينة المنورة</div>
+        <div class="srv"><span>✓</span> مرشدون متخصصون 24/24</div>
+        <div class="srv"><span>✓</span> فندق 700م من الحرم</div>
+        <div class="srv"><span>✓</span> 16 يوم إقامة كاملة</div>
+      </div>
+
+    </div>
+
+    <div class="offer-prayer">
+      نسأل الله لكم عمرة مقبولة وذنباً مغفوراً وسعياً مشكوراً 🤲
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="sec-label">لماذا تختارنا</div>
+  <h2 class="sec-title">خبرة تمتد لسنوات في خدمة ضيوف الرحمن</h2>
+  <p class="sec-sub" style="margin-bottom:38px">نضمن لك رحلة روحانية مريحة من وهران حتى العودة</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">✈️</div>
+      <h3>رحلة مباشرة من وهران</h3>
+      <p>بدون توقف، مع الخطوط الجوية الجزائرية Air Algérie</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏨</div>
+      <h3>فندق قريب من الحرم</h3>
+      <p>فندق فرسان أجياد على بُعد 700 متر فقط من الحرم المكي</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🗺️</div>
+      <h3>جولات دينية وسياحية</h3>
+      <p>زيارات منظمة لجميع المعالم الدينية في مكة والمدينة المنورة</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">👨‍💼</div>
+      <h3>مرشدون خبراء 24/24</h3>
+      <p>فريق متخصص برفقتكم على مدار الساعة طوال فترة الإقامة</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📋</div>
+      <h3>تنظيم رسمي معتمد</h3>
+      <p>وكالة مرخصة تضمن لك جميع الإجراءات القانونية والتأشيرة</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💬</div>
+      <h3>دعم مستمر</h3>
+      <p>متاحون عبر واتساب قبل الرحلة وأثناءها وبعدها</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="#" style="text-decoration:none">
+        <div class="logo-icon">🕋</div>
+        <div class="logo-text">
+          <strong>وكالة عمر — وهران</strong>
+          <span>للسياحة والأسفار</span>
+        </div>
+      </a>
+      <p>شريكك الموثوق لأداء العمرة براحة وطمأنينة — رحلات مباشرة من وهران طوال الموسم.</p>
+    </div>
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#offer">العرض الحالي</a></li>
+        <li><a href="#coming">البرامج القادمة</a></li>
+        <li><a href="#why">لماذا نحن</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><a href="#">📍 وهران، الجزائر</a></li>
+        <li><a href="tel:+213778628502" dir="ltr">📞 +213 XX XX XX XX</a></li>
+        <li><a href="https://wa.me/213778628502">💬 واتساب</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 وكالة عمر للسياحة والأسفار — وهران. جميع الحقوق محفوظة.</p>
+    <div class="socials">
+      <a class="soc" href="#">💬</a>
+      <a class="soc" href="#">📸</a>
+      <a class="soc" href="#">👥</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a class="wa-float" href="https://wa.me/213778628502" target="_blank" title="تواصل معنا">💬</a>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeOut(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="mTitle">📋 طلب الحجز</h3>
+      <p id="mSubtitle">أدخل بياناتك وسيُفتح واتساب تلقائياً</p>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-strip">
+      <span class="ms-name" id="mName">—</span>
+      <span class="ms-price" id="mPrice">—</span>
+    </div>
+    <div class="modal-body">
+
+      <div class="frow">
+        <div class="fg">
+          <label><span class="r">*</span>الاسم</label>
+          <input type="text" id="fFirst" placeholder="محمد" oninput="chk()">
+        </div>
+        <div class="fg">
+          <label><span class="r">*</span>اللقب</label>
+          <input type="text" id="fLast" placeholder="بن علي" oninput="chk()">
+        </div>
+      </div>
+
+      <div class="fg">
+        <label><span class="r">*</span>رقم الهاتف / واتساب</label>
+        <input type="tel" id="fPhone" placeholder="+213 5XX XX XX XX" dir="ltr" oninput="chk()">
+      </div>
+
+      <!-- حقل الشهر — للتسجيل المسبق فقط -->
+      <div class="fg" id="monthGroup" style="display:none">
+        <label><span class="r">*</span>الشهر المفضل للعمرة</label>
+        <select id="fMonth" onchange="chk()">
+          <option value="">— اختر الشهر —</option>
+          <option value="أوت">أوت</option>
+          <option value="سبتمبر">سبتمبر</option>
+          <option value="أكتوبر">أكتوبر</option>
+          <option value="نوفمبر">نوفمبر</option>
+          <option value="ديسمبر">ديسمبر</option>
+          <option value="جانفي">جانفي</option>
+          <option value="فيفري">فيفري</option>
+          <option value="رمضان">🌙 رمضان</option>
+          <option value="أي شهر متاح">أي شهر متاح</option>
+        </select>
+      </div>
+
+      <!-- عدد الكبار والأطفال -->
+      <div class="frow">
+        <div class="fg">
+          <label><span class="r">*</span>عدد الكبار</label>
+          <select id="fAdults" onchange="calcRoom()">
+            <option value="">—</option>
+            <option value="1">1 كبير</option>
+            <option value="2">2 كبار</option>
+            <option value="3">3 كبار</option>
+            <option value="4">4 كبار</option>
+            <option value="5">5 كبار فأكثر</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>رضع <small style="color:var(--gold);font-size:0.68rem">0→2 سنة — 70,000 دج</small></label>
+          <select id="fInfants" onchange="calcRoom()">
+            <option value="0">لا يوجد</option>
+            <option value="1">1 رضيع</option>
+            <option value="2">2 رضيعان</option>
+            <option value="3">3 رضّع</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>أطفال <small style="color:var(--gold);font-size:0.68rem">2→12 سنة — 155,000 دج</small></label>
+        <select id="fChildren" onchange="calcRoom()">
+          <option value="0">لا يوجد</option>
+          <option value="1">1 طفل</option>
+          <option value="2">2 أطفال</option>
+          <option value="3">3 أطفال</option>
+          <option value="4">4 أطفال فأكثر</option>
+        </select>
+      </div>
+
+      <!-- نتيجة الحساب التلقائي -->
+      <div class="room-suggest" id="roomBox">
+        <div class="rs-lbl">🏨 ملخص طلبك — حُسب تلقائياً</div>
+        <div class="rs-val" id="rVal">—</div>
+        <div class="rs-desc" id="rDesc">—</div>
+        <div id="rChildren" style="margin-top:6px;font-size:0.78rem;color:rgba(255,255,255,0.5);display:none"></div>
+      </div>
+
+      <button class="wa-btn" id="waBtn" disabled onclick="sendWA()">
+        💬 أرسل طلبي عبر واتساب
+      </button>
+      <p class="wa-hint">✓ سيتواصل معك فريقنا فور استلام الطلب</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// الغرفة تُحدد بعدد الكبار فقط — الأطفال يدخلون مع أوليائهم
+const ROOMS = {
+  '1':{ val:'غرفة أُحادية',        price:'تواصل للسعر',           desc:'غرفة لشخص واحد' },
+  '2':{ val:'غرفة ثنائية',         price:'248,000 دج/شخص',        desc:'غرفة لشخصين' },
+  '3':{ val:'غرفة ثلاثية',         price:'230,000 دج/شخص',        desc:'غرفة لثلاثة أشخاص' },
+  '4':{ val:'غرفة رباعية',         price:'205,000 دج/شخص ✓ الأوفر', desc:'غرفة لأربعة أشخاص' },
+  '5':{ val:'غرف متعددة / مجموعة', price:'تواصل للسعر',           desc:'سنحدد الترتيب الأمثل' }
+};
+
+let curPkg='', curPrice='', isPreReg=false;
+
+function openModal(pkg, price, adults=''){
+  isPreReg = pkg.includes('تسجيل مسبق');
+  curPkg=pkg; curPrice=price;
+
+  document.getElementById('mTitle').textContent    = isPreReg ? '📝 تسجيل مسبق' : '📋 طلب الحجز';
+  document.getElementById('mSubtitle').textContent = isPreReg
+    ? 'سجّل اسمك وسنتواصل معك فور صدور البرنامج'
+    : 'أدخل بياناتك وسيُفتح واتساب تلقائياً';
+  document.getElementById('mName').textContent  = isPreReg ? 'برامج العمرة — أوت ← رمضان' : pkg;
+  document.getElementById('mPrice').textContent = isPreReg ? 'أسعار قريباً' : price;
+
+  document.getElementById('monthGroup').style.display = isPreReg ? 'flex' : 'none';
+
+  ['fFirst','fLast','fPhone'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fAdults').value   = adults || '';
+  document.getElementById('fChildren').value = '0';
+  document.getElementById('fMonth') && (document.getElementById('fMonth').value='');
+  document.getElementById('roomBox').classList.remove('show');
+  document.getElementById('waBtn').disabled = true;
+
+  if(adults) calcRoom();
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeOut(e){ if(e.target===document.getElementById('overlay')) closeModal(); }
+
+function calcRoom(){
+  const adults   = document.getElementById('fAdults').value;
+  const infants  = parseInt(document.getElementById('fInfants').value)||0;
+  const children = parseInt(document.getElementById('fChildren').value)||0;
+  const box      = document.getElementById('roomBox');
+  const childDiv = document.getElementById('rChildren');
+
+  if(!adults){ box.classList.remove('show'); chk(); return; }
+
+  const r = ROOMS[adults] || ROOMS['5'];
+
+  // سعر الكبار
+  let adultPrice = '';
+  if(r.price !== 'تواصل للسعر'){
+    const priceNum = parseInt(r.price.replace(/[^0-9]/g,''));
+    const totalAdults = parseInt(adults) * priceNum;
+    adultPrice = ` (${(parseInt(adults))} × ${r.price} = ${totalAdults.toLocaleString('ar-DZ')} دج)`;
+  }
+
+  document.getElementById('rVal').textContent  = `${r.val} — ${r.price}`;
+  document.getElementById('rDesc').textContent = r.desc;
+
+  // تفاصيل الأطفال والرضع
+  let childLines = [];
+  if(infants > 0){
+    const total = infants * 70000;
+    childLines.push(`👶 ${infants} رضيع (0→2 سنة) × 70,000 دج = ${total.toLocaleString('ar-DZ')} دج`);
+  }
+  if(children > 0){
+    const total = children * 155000;
+    childLines.push(`🧒 ${children} طفل (2→12 سنة) × 155,000 دج = ${total.toLocaleString('ar-DZ')} دج`);
+  }
+
+  if(childLines.length > 0){
+    childDiv.style.display='block';
+    childDiv.innerHTML = childLines.join('<br>') +
+      '<br><span style="color:rgba(255,255,255,0.35);font-size:0.72rem">يدخلون مع أوليائهم في نفس الغرفة</span>';
+  } else {
+    childDiv.style.display='none';
+  }
+
+  box.classList.add('show');
+  chk();
+}
+
+function chk(){
+  const base = document.getElementById('fFirst').value.trim()
+             && document.getElementById('fLast').value.trim()
+             && document.getElementById('fPhone').value.trim()
+             && document.getElementById('fAdults').value;
+  const monthOk = !isPreReg || document.getElementById('fMonth').value;
+  document.getElementById('waBtn').disabled = !(base && monthOk);
+}
+
+function sendWA(){
+  const fn       = document.getElementById('fFirst').value.trim();
+  const ln       = document.getElementById('fLast').value.trim();
+  const ph       = document.getElementById('fPhone').value.trim();
+  const adults   = document.getElementById('fAdults').value;
+  const infants  = parseInt(document.getElementById('fInfants').value)||0;
+  const children = parseInt(document.getElementById('fChildren').value)||0;
+  const month    = document.getElementById('fMonth').value||'';
+  const r        = ROOMS[adults] || ROOMS['5'];
+
+  let lines = [`👥 عدد الكبار: ${adults} — ${r.val} (${r.price})`];
+  if(infants  > 0) lines.push(`👶 رضع (0→2 سنة): ${infants} × 70,000 دج = ${(infants*70000).toLocaleString()} دج`);
+  if(children > 0) lines.push(`🧒 أطفال (2→12 سنة): ${children} × 155,000 دج = ${(children*155000).toLocaleString()} دج`);
+  if(infants+children > 0) lines.push(`   ↳ يدخلون مع أوليائهم في نفس الغرفة`);
+
+  let msg;
+  if(isPreReg){
+    msg =
+`السلام عليكم وكالة عمر 👋
+
+📝 *تسجيل مسبق — برامج العمرة القادمة*
+━━━━━━━━━━━━━━━━━━━━━━
+👤 الاسم الكامل: ${fn} ${ln}
+📞 رقم الهاتف: ${ph}
+🌙 الشهر المفضل: ${month}
+━━━━━━━━━━━━━━━━━━━━━━
+${lines.join('\n')}
+━━━━━━━━━━━━━━━━━━━━━━
+أرجو إعلامي فور صدور البرنامج، بارك الله فيكم 🤲`;
+  } else {
+    msg =
+`السلام عليكم وكالة عمر 👋
+
+📋 *طلب حجز عمرة*
+━━━━━━━━━━━━━━━━━━━━━━
+📦 الباقة: ${curPkg}
+💰 السعر الأساسي: ${curPrice}
+━━━━━━━━━━━━━━━━━━━━━━
+👤 الاسم الكامل: ${fn} ${ln}
+📞 رقم الهاتف: ${ph}
+━━━━━━━━━━━━━━━━━━━━━━
+${lines.join('\n')}
+━━━━━━━━━━━━━━━━━━━━━━
+أرجو التواصل معي لتأكيد الحجز، بارك الله فيكم 🤲`;
+  }
+
+  window.open('https://wa.me/213778628502?text='+encodeURIComponent(msg),'_blank');
+  closeModal();
+}
+
+function goTo(id){
+  document.getElementById('navLinks').classList.remove('open');
+  const el=document.getElementById(id);
+  if(!el) return;
+  window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 72, behavior:'smooth'});
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.height=window.scrollY>60?'54px':'68px';
+});
+document.querySelectorAll('#navLinks a').forEach(a=>
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'))
+);
+</script>
+</body>
+</html>
